@@ -393,17 +393,49 @@
         </a>
         <ul class="header__link">
           <li class="header__link_style">
-            <a href="#"><img src="img/Facebook.svg" alt="" /></a>
+            <a href="#" onclick="shareOnFacebook()" target="_blank">
+              <img src="img/facebook.svg" alt="Share on Facebook" />
+            </a>
           </li>
-          <li class="header__link_style">
+
+          <script>
+            function shareOnFacebook() {
+              const url = encodeURIComponent(window.location.href);
+              const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+              window.open(
+                facebookShareUrl,
+                "facebook-share-dialog",
+                "width=800,height=600"
+              );
+              return false;
+            }
+          </script>
+          <!-- <li class="header__link_style">
             <a href="#"><img src="img/instagram.svg" alt="" /></a>
           </li>
           <li class="header__link_style">
             <a href="#"><img src="img/snapchat.svg" alt="" /></a>
-          </li>
+          </li> -->
           <li class="header__link_style">
-            <a href="#"><img src="img/gmail.svg" alt="" /></a>
+            <a href="#" onclick="shareByEmail()" target="_blank">
+              <img src="img/gmail.svg" alt="Share via Email" />
+            </a>
           </li>
+
+          <script>
+            function shareByEmail() {
+              const subject = encodeURIComponent(
+                "Ukraine Learning Materials from UNC CSEEES"
+              );
+              const body = encodeURIComponent(
+                `I wanted to share these learning materials about Ukraine, provided by the Center for Slavic, Eurasian, and East European Studies (CSEEES) at UNC. Check them out here: ${window.location.href}`
+              );
+              window.location.href = `mailto:?subject=${subject}&body=${body}`;
+            }
+          </script>
+          <!-- <li class="header__link_style">
+            <a href="#"><img src="img/gmail.svg" alt="" /></a>
+          </li> -->
         </ul>
       </div>
     </header>
